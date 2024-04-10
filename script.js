@@ -1,9 +1,12 @@
+// define event listeners 
+
 document.addEventListener('DOMContentLoaded', () => {
     const loadCarsBtn = document.getElementById('loadCarsBtn');
     const carList = document.getElementById('carList');
     cars = [];
     loadCarsBtn.addEventListener('click', () => {
-        fetch('http://localhost:3001/cars')
+        // fetch explicitly tells us to go to localhost
+        fetch("/api/getCars")
             .then(response => response.json())
             .then(data => {
                 cars = data;
@@ -28,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 function addCar(newCar) {
-    fetch('http://localhost:3001/cars', {
+    fetch("/api/addCar", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -60,7 +63,7 @@ carForm.addEventListener('submit', event => {
 // Function to remove a car
 function removeCar(index) {
     const carId = cars[index].id;
-    fetch(`http://localhost:3001/cars/${carId}`, {
+    fetch("/api/removeCar", {
         method: 'DELETE'
     })
         .then(response => response.json())

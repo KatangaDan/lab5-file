@@ -7,7 +7,7 @@ app.use(express.json());
 const cors = require('cors')
 app.use(cors())
 
-const cars = require('./cars.json');
+const cars = require("../lab5-file/api/cars.json");
 
 //get all cars
 app.get('/cars', (req, res) => {
